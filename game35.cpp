@@ -1,37 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
-void bangphuongan(int a[][6]);
-void maychoi(int a[][6],int &t,int &n);
-void nguoichoi(int a[][6],int &t,int &n);
-void xuat(int a[][6]);
-bool aichoitruoc();
+void Plan_table(int a[][6]);
+void computer(int a[][6],int &t,int &n);
+void person(int a[][6],int &t,int &n);
+void print(int a[][6]);
+bool whofirst();
 int main()
 {
 	int a[36][6]={0};
 	int t=0;
 	int n=0;
 	srand((int) time(0));
-	bangphuongan(a);
-//	xuat(a);
-	if(aichoitruoc()==true)
-		nguoichoi(a,t,n);
+	Plan_table(a);
+	if(whofirst()==true)
+		person(a,t,n);
 	while(t<=35)
 	{
-		maychoi(a,t,n);
-		nguoichoi(a,t,n);
+		computer(a,t,n);
+		person(a,t,n);
 	}
 	return 0;
 }
-bool aichoitruoc()
+bool whofirst()
 {
 	int i;
-	cout<<"nhap 1 de di truoc, 0 de di sau"<<endl;
+	cout<<"1 for person, 0 for computer"<<endl;
 	cin>>i;
 	if(i==1)
 		return true;
 	return false;
 }
-void bangphuongan(int a[][6])
+void Plan_table(int a[][6])
 {
 	for(int i=34;i>=0;i--)
 		for(int j=1;j<=5;j++)
@@ -49,7 +48,7 @@ void bangphuongan(int a[][6])
 				}
 			}
 }
-void maychoi(int a[][6],int &t,int &n)
+void computer(int a[][6],int &t,int &n)
 {	
 	while(true)
 	{
@@ -78,34 +77,34 @@ void maychoi(int a[][6],int &t,int &n)
 		}
 			
 	}			
-	cout<<"tong(may choi): "<<t<<" "<<endl;
+	cout<<"total(computer): "<<t<<" "<<endl;
 	if(t>35)
 	{
-		cout<<"may thua "<<endl;
+		cout<<"computer lose "<<endl;
 	}
 }
-void nguoichoi(int a[][6],int &t,int &n)
+void person(int a[][6],int &t,int &n)
 {
 	if(t<=35)
 	{
-		cout<< "nhap so tu 1 den t: ";
+		cout<< "1 to 5: ";
 		int i;
 		cin>>i;
 		if(i==n)
 		{
-			cout<<"nhap lai != "<<i<<": ";
+			cout<<"again != "<<i<<": ";
 			cin>>i;	
 		}
 		t=t+i;
 		n=i;
-		cout<<"tong(nguoi choi): "<<t<<endl;
+		cout<<"total(person): "<<t<<endl;
 		if(t>35)
 		{
-		cout<<"nguoi thua "<<endl;
+		cout<<"person lose "<<endl;
 		}
 	}	
 }
-void xuat(int a[][6]){
+void print(int a[][6]){
 	for(int i=35;i>=0;i--)
 	{
 		for(int j=1;j<=5;j++)
